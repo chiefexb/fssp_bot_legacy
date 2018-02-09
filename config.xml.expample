@@ -1,0 +1,8 @@
+<config>
+  <telegram>
+    <token></token>
+  </telegram>
+  <fssp>
+    <token> </token>
+  </fssp>
+</config>
