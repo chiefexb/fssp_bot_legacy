@@ -1,20 +1,32 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 from lxml import etree
+from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
+from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
+                          ConversationHandler)
+import logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+level=logging.INFO)
+
+logger = logging.getLogger(__name__)
+
 def start(bot, update):
-    reply_keyboard = [['Boy', 'Girl', 'Other']]
-
+    log_params('help', update)
     update.message.reply_text(
-        'Привет я робот судебный пристав. '
-        'Чем могу быть полезен?'
-        '',
-        reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True))
+        'Hi! My name is Professor Bot. I will hold a conversation with you. '
+        'Send /cancel to stop talking to me.\n\n'
+        'Are you a boy or a girl?')
 
-    return 
+
+def error(bot, update, error):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, error) 
 def main():
-    cfg = etree.parse(f) 
+    logger.setLevel(logging.DEBUG)
+    cfg = etree.parse('./config.xml') 
     cfgroot=cfg.getroot()
     telegram_param=cfgroot.find('telegram')  
-    tg_token=telegram_param('token').text  
+    tg_token=telegram_param.find('token').text  
     updater = Updater(tg_token)
     dp = updater.dispatcher
     updater.start_polling()
