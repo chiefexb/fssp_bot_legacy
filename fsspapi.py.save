@@ -23,13 +23,16 @@ class FsspApi(object):
          'region'   :self.region,
          'firstname':self.firstname,
          'lastname' :self.lastname})
+        text=str(req.text)
+        ans=json.loads(text)
         if (req.status_code==200):
-            self.task=req.content['task']
+            self.task= ans['response']['task']
         self.r_status=req.status_code
         
     def get_status_task(self):
-        
-        req=requests.get(self.base_url+'/status',params=self.par)
+        req=requests.get(self.base_url+'/status',params=
+        {'token':self.token,
+          'task':self.task)
         if req.status_code==200:
            self.status=req.content
         self.r_status=req.status_code
