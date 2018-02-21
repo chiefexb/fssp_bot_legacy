@@ -12,6 +12,7 @@ class FsspApi(object):
     firstname=''
     r_status_code=''
     status=-1
+    answ=''
     def __init__(self,token):
         self.token=token
     
@@ -20,17 +21,22 @@ class FsspApi(object):
 
     def set_firstname(self,firstname):
         self.firstname=firstname
-
+        
     def set_region(self,region):
         self.region=region
-
+     
     def search_phisycal(self):
-        
+        print (  {'token':self.token,
+         'region'   :self.region,
+         'firstname':self.firstname,
+         'lastname' :self.lastname})
+         
         req=requests.get(self.base_url+'/search/physical',params=
         {'token'    :self.token,
          'region'   :self.region,
          'firstname':self.firstname,
          'lastname' :self.lastname})
+        print (req.url)
         if (req.status_code==200):
             #print (req.__dir__,req.url)
             #print ((req.content), type (req.content))
@@ -44,6 +50,7 @@ class FsspApi(object):
         {'token':self.token,
         'task':self.task})
         print (self.task,req)
+        print (req.url)
         if req.status_code==200:
            print (req.text)
            jsdata=json.loads (req.text)
@@ -66,8 +73,12 @@ class FsspApi(object):
         req=requests.get(self.base_url+'/result',params=
         {'token':self.token,
         'task':self.task})
+        print (req.url)
         if (req.status_code==200):
             print (req.text)
+    def get_res(self):
+        pass
+      
 def main():
    pass
 if __name__ == "__main__":
