@@ -13,6 +13,9 @@ class FsspApi(object):
     r_status_code=''
     status=-1
     answ=''
+    result=''
+    task=''
+    token=''
     def __init__(self,token):
         self.token=token
     
@@ -61,6 +64,7 @@ class FsspApi(object):
            elif jsdata['response']['status']==3:
                rr=True
         self.r_status=req.status_code
+         
         return rr
     def wait_for(self):
         
@@ -75,11 +79,9 @@ class FsspApi(object):
         'task':self.task})
         print (req.url)
         if (req.status_code==200):
-            print (req.text)
+            jsdata=json.loads (req.text)
+            list_ip= jsdata['response']['result'][0]['result']
+            self.result=list_ip
     def get_res(self):
         pass
       
-def main():
-   pass
-if __name__ == "__main__":
-    main()
