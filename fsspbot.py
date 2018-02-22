@@ -8,7 +8,8 @@ from telegram import ReplyKeyboardMarkup, KeyboardButton
 import logging
 from fsspapi import *
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-level=logging.INFO)
+level=logging.INFO,filename ='./bot.log')
+#logging.basicConfig(format = u'%(levelname)-8s [%(asctime)s] %(message)s', level = logging.DEBUG, filename = log_path+log_file)
 
 logger = logging.getLogger(__name__)
 reply_keyboard = [['Найти задолженность']]
@@ -26,6 +27,8 @@ def start(bot, update):
 def search_ip(bot, update):
     text = update.message.text
     #logger.info("Gender of %s: %s", user.first_name, update.message.text)
+    user = update.message.from_user
+    logger.info(user.first_name,user.last_name,user.id,'SEARCH')
     update.message.reply_text(
         "Наберите код региона?")
   
@@ -47,6 +50,7 @@ def upd_name(bot, update):
     return LASTNAME
 def upd_lastname(bot, update):
     text = update.message.text
+    user = update.message.from_user
     facts['lastname']=text
     #logger.info()
     #update.message.reply_text(
@@ -65,8 +69,10 @@ def upd_lastname(bot, update):
     print (api2.result)
     if len(api2.result)>0:
         for  rez in api2.result:
+          
             bot.send_message(chat_id=update.message.chat_id,text='=======================' )
             for m in format_ip(rez):
+                logger.info(user.first_name,user.last_name,user.id,m)
                 try:
                    bot.send_message(chat_id=update.message.chat_id,parse_mode='HTML',text=m )
                 except:
