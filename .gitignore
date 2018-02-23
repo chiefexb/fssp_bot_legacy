@@ -3,3 +3,4 @@
 config.xml
 *.save
 t.py
+*.log
