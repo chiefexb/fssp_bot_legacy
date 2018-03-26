@@ -25,8 +25,7 @@ SECRET_KEY = 'e=ep^=#9e@+$y5p^bu1r*a($aai449@*zb&p(eepa^o@a87==-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fssp.robointerativo.ru']
 
 
 # Application definition
@@ -56,7 +55,7 @@ ROOT_URLCONF = 'fsspbot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['/home/fssp_telegram_bot/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
