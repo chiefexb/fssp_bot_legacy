@@ -16,9 +16,9 @@ def index (request):
     #now = datetime.datetime.now()
     #html = t.render(context=None, request=None)
     #p=Task.objects.filter(thash=gt['hash'])
-    p=Task.objects
-    a=p.values_list()
-    p2=Task.objects.all()
+    #p=Task.objects
+    #a=p.values_list()
+    #p2=Task.objects.all()
     html="HHH"
     #t = get_template('templates/base.html')
     now = datetime.datetime.now()
