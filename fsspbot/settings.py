@@ -9,23 +9,22 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+SECRET_KEY='7_(09o$#6*0xk8qpkqyuw#4s$wj*s@i86f-bnbo&asl44g!n1s'
 import os
 from fsspbotdb import *
-from secret import *
+#from fsspbot.secret import *
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'e=ep^=#9e@+$y5p^bu1r*a($aai449@*zb&p(eepa^o@a87==-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['fssp.robointerativo.ru']
+ALLOWED_HOSTS = ['fssp.robointerativo.ru','localhost']
 
 
 # Application definition
@@ -55,7 +54,7 @@ ROOT_URLCONF = 'fsspbot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [path2],
+        'DIRS': ['/home/fssp_telegram_bot/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +77,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': path4,
+            'read_default_file': '/home/f.cnf',
         },
     }
 }

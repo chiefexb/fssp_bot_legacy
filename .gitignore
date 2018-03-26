@@ -1,6 +1,6 @@
 *.pyc
 /__pycache__/
-fsspbot/secret.py
+fsspbot/msecret.py
 fsspbot/__pycache__/
 fsspbotdb/__pycache__/
 config.xml
