@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from fsspbotdb import *
-
+from secret import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e=ep^=#9e@+$y5p^bu1r*a($aai449@*zb&p(eepa^o@a87==-'
+#SECRET_KEY = 'e=ep^=#9e@+$y5p^bu1r*a($aai449@*zb&p(eepa^o@a87==-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'fsspbot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/fssp_telegram_bot/'],
+        'DIRS': [path2],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
