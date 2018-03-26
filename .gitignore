@@ -1,5 +1,7 @@
 *.pyc
 /__pycache__/
+fsspbot/__pycache__/
+fsspbotdb/__pycache__/
 config.xml
 *.save
 t.py
