@@ -7,4 +7,5 @@ urlpatterns = [
     path("<slug:slug>", views.webhook, name='webhook'),
     
     
+    
 ]
