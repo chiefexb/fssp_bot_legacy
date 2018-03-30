@@ -1,3 +1,4 @@
+from fsspbotdb.fsspapi import *
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import get_template
@@ -7,14 +8,32 @@ from fsspbotdb.models import *
 import datetime
 from django.shortcuts import get_object_or_404
 
+from telegram.ext import Dispatcher
 import telegram
+from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
+from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
+                          ConversationHandler)
+from telegram import ReplyKeyboardMarkup, KeyboardButton
+
 from django.views.decorators.csrf import csrf_exempt
+import logging
 
 global bot 
 
 p=Setting.objects.filter(valuename="TELETOKEN")
 bot = telegram.Bot(token=p.values()[0]['value'])
 del p
+
+logging.basicConfig(format = u'%(levelname)-8s [%(asctime)s] %(message)s', level = logging.DEBUG, filename = '/home/bot.log')
+
+def start (bot,update):
+    #update.message.reply_text('Thank you! I hope we can talk again some day.')
+    bot.send_message(chat_id=update.message.chat_id, text="Привет я робот судебный пристав!\n Чем могу быть полезен?",reply_markup=markup)
+    return SEARCH
+ 
+
+reply_keyboard = [['Найти задолженность']]
+markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True)
 
 def index (request):
     
@@ -30,10 +49,16 @@ def index (request):
     now = datetime.datetime.now()
     #html = t.render(context={'tasks':p2}, request=None)
     return HttpResponse(html)
+def dispatcher (update):
+    user_id         = update.message.from_user.id
+    update_id       = update.update_id
+    message_date    = update.message.date
+    message_id      = update.message.message_id
+    p1=Telegram_session.objects.filter(user_id=user_id, status = 10)
+    id= token=p.values()[0]['id']
+    p2=Telegram_session (id=id,user_id = user_id, update_id=update_id, message_date=message_date, message_id=message_id, status=0  )
+    p2.save()
 def set_webhook (request):
-#curl -F “url=https://<YOURDOMAIN.EXAMPLE>/<WEBHOOKLOCATION>"
-# https://api.telegram.org/bot<YOURTOKEN>/setWebhook
-   # 'https://fssp.robointerativo.ru/HOOK'
     s = bot.setWebhook('https://fssp.robointerativo.ru/HOOK')
     if s:
         html="webhook setup ok"
@@ -42,25 +67,33 @@ def set_webhook (request):
     return HttpResponse(html)
 
 
+
 @csrf_exempt
 def webhook(request):
     html=''
     if request.method == "POST":
         #f=open('/home/bot.log','a')
-        # retrieve the message in JSON and then transform it to Telegram object
         #f.write(str(request.body)+'\n')
-        #update = telegram.Update.de_json(request.get_json(force=True), bot)
-        j=json.loads(bytes.decode(request.body) )
-        update = telegram.Update.de_json(j, bot)
-        chat_id = update.message.chat.id
-        update_id= update.update_id
-        # Telegram understands UTF-8, so encode text for unicode compatibility
-        text = update.message.text.encode('utf-8')
-        #f.write(str(type(update))+str(text)+str(update_id)+'\n')
+        logging.info( str( request.body) )
+        j= json.loads(request.body.decode())
+        try:
+            update = telegram.Update.de_json(j, bot)
+        except:
+            #f.write('ERR init update'+'\n')
+            logging.error('ERR init update')
+        else:
+            #f.write('init update'+'\n')
+            logging.info('start init update')
+            try:
+                dispatcher (update )      
+                #st.callback(bot,update)
+                #dp.process_update(update)
+            except:
+                #f.write('ERR HANDLERS'+'\n')
+                logging.error('ERR init update')
+                #f.write(sys.exc_info()[0])
+        html=request.body.decode()
+
         #f.close()
-        html='OK'
-        # repeat the same message back (echo)
-        bot.sendMessage(chat_id=chat_id, text=text)
-        bot.sendMessage(chat_id=update.message.chat_id, text='Hello, there')
-        #request.body
+
     return HttpResponse (html)

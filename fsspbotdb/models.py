@@ -4,6 +4,7 @@ from django.db import models
 class Setting(models.Model):
     valuenamechoice= (
      ('TELETOKEN','Telegram Token'),
+     ('FSSPTOKEN','FSSP Token'),
      )
     valuename = models.CharField(
         max_length=100,
@@ -17,3 +18,20 @@ class Setting(models.Model):
         """
         return str(self.valuename)
        
+#class Message(models.Model):
+class Telegram_session(models.Model):
+    update_id    = models.BigIntegerField  ( null='False' )
+    message_id   = models.BigIntegerField  ( null='False' )
+    message_date = models.DateTimeField   ( auto_now='False', auto_now_add=False)
+    user_id      = models.BigIntegerField  ( null='False' )
+    status       = models.BigIntegerField       ( verbose_name='Статус' )
+    def __str__(self):
+        """
+        String for representing the Model object (in Admin site etc.)
+        """
+        return str(self.id )
+
+class Cookie (models.Model):
+    user_id    = models.BigIntegerField  ( null='False' )
+    value_name = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Название')
+    name       = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Значение')
