@@ -24,6 +24,7 @@ class Telegram_session(models.Model):
     message_id   = models.BigIntegerField  ( null='False' )
     message_date = models.DateTimeField   ( auto_now='False', auto_now_add=False)
     user_id      = models.BigIntegerField  ( null='False' )
+    chat_id      = models.BigIntegerField  ( null='False' )
     status       = models.BigIntegerField       ( verbose_name='Статус' )
     def __str__(self):
         """
