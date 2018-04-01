@@ -4,7 +4,27 @@ import requests
 import json
 import time
 
-
+def format_ip(msg):
+    fmsg=[]
+    fmsg.append('<b>Должник (физ. лицо: ФИО, дата и место рождения; </b>')
+    fmsg.append (msg['name'])
+    fmsg.append ('<b>ИСПОЛНИТЕЛЬНОЕ ПРОИЗВОДСТВО:</b>')
+    fmsg.append(msg['exe_production'])
+    fmsg.append ('<b>ИСПОЛНИТЕЛЬНЫЙ ДОКУМЕНТ:</b>')
+    fmsg.append(msg['details'])
+    if len (msg['ip_end'])>0:
+        fmsg.append ('<b>Дата окончания, статья</b>')
+        fmsg.append(msg['ip_end']) 
+    if len (msg['subject'])>0:
+        fmsg.append ('<b>Предмет исполнения:</b>')
+        fmsg.append(msg['subject'])
+        
+    fmsg.append ('<b>Отдел судебных приставов </b>')
+    fmsg.append(msg['department'])
+    fmsg.append ('<b>Судебный пристав исполнитель</b>')
+    fmsg.append(msg['bailiff'].replace('<br>',' '))
+   
+    return fmsg
 class FsspApi(object):
     base_url="https://api-ip.fssprus.ru/api/v1.0"
     region=''

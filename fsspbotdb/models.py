@@ -23,6 +23,7 @@ class Telegram_session(models.Model):
     update_id    = models.BigIntegerField  ( null='False' )
     message_id   = models.BigIntegerField  ( null='False' )
     message_date = models.DateTimeField   ( auto_now='False', auto_now_add=False)
+    message      = models.CharField( max_length=100, null='False', blank='False')  
     user_id      = models.BigIntegerField  ( null='False' )
     chat_id      = models.BigIntegerField  ( null='False' )
     status       = models.BigIntegerField       ( verbose_name='Статус' )
@@ -34,5 +35,5 @@ class Telegram_session(models.Model):
 
 class Cookie (models.Model):
     user_id    = models.BigIntegerField  ( null='False' )
-    value_name = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Название')
-    name       = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Значение')
+    valuename = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Название')
+    value       = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Значение')
