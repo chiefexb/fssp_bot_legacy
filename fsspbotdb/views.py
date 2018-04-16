@@ -63,6 +63,7 @@ def save_cookies(j,name,val):
      p=Cookie.objects.filter(user_id=usr_id, valuename=name)
      if p.count()>0:
          p.update(value=val)
+         logging.info('COOK'+ name+' '+var+'^'+str(upd_id) )
      else:
          p=Cookie(user_id=usr_id,valuename=name,value=val)
          p.save()
@@ -195,16 +196,16 @@ def parser(j):
                 pass
             if text == '/search':
             #session_start (j)
-               u=j
-               try:
-                   a=ipsearch ( u )
-               except:
-                   e = sys.exc_info()[0]
-                   logging.error('Error while search '+ str(e) )
-                   #logging.error('Error in search '+ str( type(j)  )
-                   #r=send_message(chat_id,'В данный момент я на техобслуживании, \n'+
-                   #'воспользуйтесь пока официальным сайтом https://fssprus.ru/iss/ip/ или попробуйте позже.')
-                   #'Введите Фамилию Имя через пробел')
+               #u=j
+               #try:
+               #    a=ipsearch ( u )
+               #except:
+               #    e = sys.exc_info()[0]
+               #    logging.error('Error while search '+ str(e) )
+                #logging.error('Error in search '+ str( type(j)  )
+               r=send_message(chat_id,'В данный момент я на техобслуживании, \n'+
+               'воспользуйтесь пока официальным сайтом https://fssprus.ru/iss/ip/ или попробуйте позже.')
+               #'Введите Фамилию Имя через пробел')
                    #logging.info(r)
             if text == '/about':
                 r=send_message(chat_id,'Бот создан Алексеем Шило @Alexpricker \n   '+
