@@ -5,7 +5,10 @@ class Setting(models.Model):
     valuenamechoice= (
      ('TELETOKEN','Telegram Token'),
      ('FSSPTOKEN','FSSP Token'),
+     ('VIBERTOKEN','VIBER Token'),
+     ('SYSDEFAULT','Default Messanger'),
      )
+    
     valuename = models.CharField(
         max_length=100,
         choices=valuenamechoice,
