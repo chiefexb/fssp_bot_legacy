@@ -27,7 +27,7 @@ def webhook(request):
     #logging.info('WEBHOOK '+ str( request.body) )
     if request.method == "POST":
         logging.info('WEBHOOK '+ str( request.body) )
-        logging.info('WEBHOOK '+ str( request.META) )
+        #logging.info('WEBHOOK '+ str( request.META) )
         #j= json.loads(request.body.decode())
         html=request.body.decode()
 
