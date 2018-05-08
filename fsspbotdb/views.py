@@ -26,6 +26,12 @@ def webhook(request):
     html=''
     #logging.info('WEBHOOK '+ str( request.body) )
     if request.method == "POST":
+        p=Setting.objects.filter(valuename="SYSDEFAULT")
+        sys_def=p.values()[0]['value']
+        if sys.def=='VIBER':
+             p=Setting.objects.filter(valuename="VIBERTOKEN")
+             token=p.values()[0]['value']
+             
         logging.info('WEBHOOK '+ str( request.body) )
         #logging.info('WEBHOOK '+ str( request.META) )
         #j= json.loads(request.body.decode())
