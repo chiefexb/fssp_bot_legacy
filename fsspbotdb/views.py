@@ -4,6 +4,7 @@ from django.template.loader import get_template
 from django.template import Context
 import  json
 from fsspbotdb.models import *
+from api import viber
 import datetime
 from django.shortcuts import get_object_or_404
 import requests
@@ -28,11 +29,17 @@ def webhook(request):
     if request.method == "POST":
         p=Setting.objects.filter(valuename="SYSDEFAULT")
         sys_def=p.values()[0]['value']
-        if sys.def=='VIBER':
+       
+        if sys_def=='VIBER':
              p=Setting.objects.filter(valuename="VIBERTOKEN")
-             token=p.values()[0]['value']
-             
-        logging.info('WEBHOOK '+ str( request.body) )
+             tok=p.values()[0]['value']
+             mes=viber.message_request(request.body.decode() )
+             logging.info('WH'+ str(request.body.decode()))
+             if mes.event=='message':
+                k=k=viber.keyboard()
+                k.add_button(text='Найти долги')
+                info= viber.send_message (logging,tok,'Я робот судебный пристав, узнайте есть ли у Вас долги',mes.sender.id,'fssp',keyboard=k)
+                logging.info('WEBHOOK SEND '+ str( info) )
         #logging.info('WEBHOOK '+ str( request.META) )
         #j= json.loads(request.body.decode())
         html=request.body.decode()
