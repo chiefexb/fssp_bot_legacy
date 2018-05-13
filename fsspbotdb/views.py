@@ -37,7 +37,9 @@ def webhook(request):
              logging.info('WH'+ str(request.body.decode()))
              if mes.event=='message':
                 k=k=viber.keyboard()
-                k.add_button(text='Найти долги')
+                k.add_button(Text='Найти долги',ActionBody='searchip')
+                k.add_button(Text='О программе',ActionBody='about')
+
                 info= viber.send_message (logging,tok,'Я робот судебный пристав, узнайте есть ли у Вас долги',mes.sender.id,'fssp',keyboard=k)
                 logging.info('WEBHOOK SEND '+ str( info) )
         #logging.info('WEBHOOK '+ str( request.META) )
