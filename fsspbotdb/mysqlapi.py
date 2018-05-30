@@ -46,20 +46,20 @@ class MyTable(object):
 
 class MyData():
 
-    def get_table (self, table_name):
+    def get_table(self, table_name):
 
-        return MyTable(self.conn,table_name, self.table_prefix)
+        return MyTable(self.conn, table_name, self.table_prefix)
 
-    def __init__(self,config_file):
-        config=configparser.ConfigParser()
+    def __init__(self, config_file, prefix):
+        config = configparser.ConfigParser()
         config.read(config_file)
-        client=config['client']
+        client = config['client']
         self.conn = connector.connect(host='localhost',
                                       database=client['database'],
                                       user=client['user'],
                                       password=client['password'])
         #self.cursor = self.conn.cursor()
-        self.table_prefix= client['prefix']
+        self.table_prefix = prefix
 
     def __del__(self):
         self.conn.close()

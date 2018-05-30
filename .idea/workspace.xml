@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d6700dc0-9c08-47bd-a51b-b7db04d5b0c4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/config.xml.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fsspbotdb/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fsspbotdb/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsspbotdb/jobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/fsspbotdb/jobs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fsspbotdb/mysqlapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/fsspbotdb/mysqlapi.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jobs.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jobs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fsspbotdb/jobs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
+            <state relative-caret-position="396">
+              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
               <folding>
                 <element signature="e#34#53#0" expanded="true" />
               </folding>
@@ -68,8 +69,8 @@
       <file leaf-file-name="mysqlapi.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fsspbotdb/mysqlapi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="46" column="12" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="12" />
+            <state relative-caret-position="148">
+              <caret line="50" column="18" lean-forward="true" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -77,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fsspbotdb/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
+            <state relative-caret-position="522">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
             </state>
           </provider>
         </entry>
@@ -106,13 +107,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/fsspbotdb/mysqlapi.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/job_service.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/views.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/fsspapi.py" />
-        <option value="$PROJECT_DIR$/fsspbotdb/jobs.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/models.py" />
+        <option value="$PROJECT_DIR$/fsspbotdb/mysqlapi.py" />
+        <option value="$PROJECT_DIR$/fsspbotdb/jobs.py" />
       </list>
     </option>
   </component>
@@ -288,10 +289,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <folding>
+            <element signature="e#23#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fsspbotdb/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fsspbotdb/mysqlapi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="46" column="12" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="12" />
+        <state relative-caret-position="148">
+          <caret line="50" column="18" lean-forward="true" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -310,28 +328,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fsspbotdb/jobs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
+        <state relative-caret-position="396">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
           <folding>
             <element signature="e#34#53#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="10" lean-forward="true" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-          <folding>
-            <element signature="e#23#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fsspbotdb/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
         </state>
       </provider>
     </entry>

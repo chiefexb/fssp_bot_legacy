@@ -28,10 +28,10 @@ class JobStateMachine(object):
                    stop_job(jj)
 
 def main ():
-    p = MyData('/home/f.cnf')
-
+    p = MyData('/home/f.cnf', 'fsspbotdb')
+    job = p.get_table('job')
     while 1:
-        p.get_table('')
+        
         pass
 #p=Setting.objects.filter(valuename="VIBERTOKEN")
 #             tok=p.values()[0]['value']
