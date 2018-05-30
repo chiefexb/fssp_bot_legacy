@@ -56,3 +56,8 @@ class Job (models.Model):
      status    = models.BigIntegerField(null='False' )
      job_name  = models.CharField(max_length=1000, null='False', blank='False', verbose_name='Название Джоба')
 
+    def __str__(self):
+        """
+        String for representing the Model object (in Admin site etc.)
+        """
+        return str(self.id )

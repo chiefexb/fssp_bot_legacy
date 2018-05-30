@@ -39,7 +39,7 @@ class MyTable(object):
 
     def __init__(self, conn, table_name, prefix):
         self._filter = {}
-        self.conn=conn
+        self.conn = conn
         self.cursor = self.conn.cursor()
         self.table_name = prefix + table_name
 
