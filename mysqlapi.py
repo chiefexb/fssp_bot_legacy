@@ -30,8 +30,13 @@ class MyTable(object):
             sq = 'select * from ' + self.table_name + ff
         else:
             sq = 'select ' + ', '.join(args) + ' from ' + self.table_name + ff
-        self.cursor.execute(sq)
-        return self.cursor.fetchall()
+            try:
+                self.cursor.execute(sq)
+            except:
+                print(sq)
+
+        # self.cursor.fetchall()
+        return
         
     def filter(self, *args, **kwargs):
         print (kwargs)
