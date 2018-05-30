@@ -4,7 +4,7 @@
 import configparser
 from mysql import connector
 from time import *
-from .mysqlapi import *
+from . import mysqlapi
 
 
 def search_physical():
@@ -28,7 +28,7 @@ class JobStateMachine(object):
                    stop_job(jj)
 
 def main ():
-    p = MyData('/home/f.cnf', 'fsspbotdb')
+    p = mysqlapi.MyData('/home/f.cnf', 'fsspbotdb')
     job = p.get_table('job')
     # while 1:
     print(job.values())
