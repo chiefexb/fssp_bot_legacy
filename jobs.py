@@ -28,7 +28,7 @@ class JobStateMachine(object):
                    stop_job(jj)
 
 def main ():
-    p = mysqlapi.MyData('/home/f.cnf', 'fsspbotdb')
+    p = MyData('/home/f.cnf', 'fsspbotdb')
     job = p.get_table('job')
     # while 1:
     print(job.values())
