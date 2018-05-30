@@ -30,9 +30,9 @@ class JobStateMachine(object):
 def main ():
     p = MyData('/home/f.cnf', 'fsspbotdb')
     job = p.get_table('job')
-    while 1:
+    # while 1:
+    print(job.values())
         
-        pass
 #p=Setting.objects.filter(valuename="VIBERTOKEN")
 #             tok=p.values()[0]['value']
 
