@@ -30,6 +30,7 @@ class MyTable(object):
             sq = 'select * from ' + self.table_name + ff
         else:
             sq = 'select ' + ', '.join(args) + ' from ' + self.table_name + ff
+            print(sq)
             try:
                 self.cursor.execute(sq)
             except:
