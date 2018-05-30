@@ -28,6 +28,7 @@ class MyTable(object):
             ff = ' where ' + ' and '.join(k + '=' + str(v) for (k, v) in self._filter.items())
         if len(args) == 0:
             sq = 'select * from ' + self.table_name + ff
+            print (sq)
         else:
             sq = 'select ' + ', '.join(args) + ' from ' + self.table_name + ff
             print(sq)
@@ -36,8 +37,8 @@ class MyTable(object):
             except:
                 print(sq)
 
-        # self.cursor.fetchall()
-        return
+
+        return self.cursor.fetchall()
         
     def filter(self, *args, **kwargs):
         print (kwargs)
