@@ -4,7 +4,7 @@
 import configparser
 from mysql import connector
 from time import *
-from fsspbotdb.mysqlapi import *
+from .mysqlapi import *
 
 
 def search_physical():
@@ -32,7 +32,7 @@ def main ():
     job = p.get_table('job')
     # while 1:
     print(job.values())
-        
+
 #p=Setting.objects.filter(valuename="VIBERTOKEN")
 #             tok=p.values()[0]['value']
 
