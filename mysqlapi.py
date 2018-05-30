@@ -21,15 +21,15 @@ class MyTable(object):
     def save(self):
         self.conn.commit()
 
-    def values (self,*args,**kwargs):
-        if self._filter =={}  :
-            ff=''
+    def values (self, *args, **kwargs):
+        if self._filter == {}:
+            ff = ''
         else:
-            ff=' where '+ ' and '.join(k +'='+str(v) for (k,v) in self._filter.items() )
-        if len(args)==0:
-            sq='select * from ' + self.table_name +ff
+            ff = ' where ' + ' and '.join(k + '=' + str(v) for (k, v) in self._filter.items())
+        if len(args) == 0:
+            sq = 'select * from ' + self.table_name + ff
         else:
-            sq='select ' + ', '.join(args) + ' from ' + self.table_name  +ff
+            sq = 'select ' + ', '.join(args) + ' from ' + self.table_name + ff
         self.cursor.execute(sq)
         return self.cursor.fetchall()
         
