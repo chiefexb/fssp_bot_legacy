@@ -5,6 +5,7 @@ import json
 import time
 
 def format_ip(msg):
+
     fmsg=[]
     fmsg.append('<b>Должник (физ. лицо: ФИО, дата и место рождения; </b>')
     fmsg.append (msg['name'])
