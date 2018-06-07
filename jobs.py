@@ -5,7 +5,7 @@ import configparser
 
 from time import *
 from mysqlapi import *
-
+from api.fsspapi import *
 
 def search_physical():
     sleep(6)
@@ -13,22 +13,12 @@ def search_physical():
     return 1
 
 
-class JobStateMachine(object):
-    def get_state():
-        pass
+def main():
 
-    def __init__(self):
-        self.job_name = ''
-
-    def get_active(self):
-        for jj in act_jobs:
-            if self.job_name == "search_physical":
-                f = search_physical()
-                if f > 0:
-                   stop_job(jj)
-
-def main ():
     p = MyData('/home/f.cnf', 'fsspbotdb')
+    setting = p.get_table('setting')
+    val = setting.values(valuename='FSSPTOKEN')
+    print(val)
     job = p.get_table('job')
     # while 1:
     print(job.values())

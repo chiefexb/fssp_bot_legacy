@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d6700dc0-9c08-47bd-a51b-b7db04d5b0c4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/config.xml.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/jobs.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jobs.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jobs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jobs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="822">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="404">
+              <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
               <folding>
                 <element signature="e#34#53#0" expanded="true" />
               </folding>
@@ -74,7 +75,7 @@
       <file leaf-file-name="job_service.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fsspbotdb/job_service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
+            <state relative-caret-position="66">
               <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
               <folding>
                 <element signature="e#33#44#0" expanded="true" />
@@ -83,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fsspbotdb/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="308">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -118,9 +119,9 @@
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/mysqlapi.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/jobs.py" />
-        <option value="$PROJECT_DIR$/jobs.py" />
         <option value="$PROJECT_DIR$/mysqlapi.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/models.py" />
+        <option value="$PROJECT_DIR$/jobs.py" />
       </list>
     </option>
   </component>
@@ -438,16 +439,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fsspbotdb/mysqlapi.py" />
-    <entry file="file://$PROJECT_DIR$/fsspbotdb/job_service.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-          <folding>
-            <element signature="e#33#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fsspbotdb/jobs.py" />
     <entry file="file://$PROJECT_DIR$/fsspbotdb/fsspapi.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -455,16 +446,6 @@
           <caret line="107" column="9" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
           <folding>
             <element signature="e#43#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jobs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#34#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -486,8 +467,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fsspbotdb/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="308">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fsspbotdb/job_service.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding>
+            <element signature="e#33#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <folding>
+            <element signature="e#34#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
