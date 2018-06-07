@@ -3,7 +3,10 @@ from mysql import connector
 
 
 class MyTable(object):
-#byCol = {cl:i for i,(cl,type, a, b, c,d,e) in enumerate(Cursor.description
+    @property
+    def by_col(self):
+        return {cl: i for i, (cl, tp,  a, b, c, d, e) in enumerate(self.cursor.description)}
+
     def add(self, *args, **kwargs):
  
     #INSERT INTO dept VALUES (50, «ПРОДУКЦИЯ», «САН-ФРАНЦИСКО»);
@@ -50,7 +53,7 @@ class MyTable(object):
         self._filter = {}
         self.conn = conn
         self.cursor = self.conn.cursor()
-        self.table_name = prefix +'_' +table_name
+        self.table_name = prefix + '_' + table_name
 
 
 class MyData():

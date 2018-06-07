@@ -47,14 +47,14 @@ class Cookie (models.Model):
 
     user_id = models.BigIntegerField  ( null='False' )
     valuename = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Название')
-    value = models.CharField(max_length=1000,null='False', blank='False', verbose_name='Значение')
+    value = models.CharField(max_length=1000, null='False', blank='False', verbose_name='Значение')
 
 
 class Job (models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField(null='True')
-    status    = models.BigIntegerField(null='False' )
-    job_name  = models.CharField(max_length=1000, null='False', blank='False', verbose_name='Название Джоба')
+    status = models.BigIntegerField(null='False')
+    job_name = models.CharField(max_length=1000, null='False', blank='False', verbose_name='Название Джоба')
 
     def __str__(self):
 
