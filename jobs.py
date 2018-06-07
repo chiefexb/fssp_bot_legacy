@@ -2,9 +2,9 @@
 #coding: utf8
 
 import configparser
-from mysql import connector
+
 from time import *
-from  mysqlapi import *
+from mysqlapi import *
 
 
 def search_physical():
