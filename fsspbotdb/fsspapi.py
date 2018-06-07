@@ -71,7 +71,7 @@ class FsspApi(object):
             jsdata = json.loads (req.text)
             self.task=jsdata['response']['task']
         self.r_status = req.status_code
-        
+
     def get_status_task(self):
         rr = False
         req=requests.get(self.base_url+'/status', params=

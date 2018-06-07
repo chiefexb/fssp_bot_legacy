@@ -23,10 +23,10 @@ def main():
     fssp.set_firstname('Сергей')
     fssp.set_lastname('Шило')
     fssp.set_region('09')
-    tsk = fssp.search_phisycal()
+    fssp.search_phisycal()
     #job = p.get_table('job')
     # while 1:
-    print('TASK ' + tsk)
+    print('TASK ' + fssp.task)
 
 #p=Setting.objects.filter(valuename="VIBERTOKEN")
 #             tok=p.values()[0]['value']
