@@ -14,7 +14,7 @@ class MyTable(object):
 
         flds = ', '.join(k for (k, v) in kwargs.items())
         vals = ', '.join(str("'" + k + "'") for (k, v) in kwargs.items())
-        ff= "INSERT INTO (" + flds + ") VALUES (" + vals + ")"
+        ff= "INSERT INTO " + self.table_name + "(" + flds + ") VALUES (" + vals + ")"
         print(ff)
 
     def update(self,*args,**kwargs):
