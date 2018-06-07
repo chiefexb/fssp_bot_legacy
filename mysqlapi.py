@@ -11,10 +11,11 @@ class MyTable(object):
  
     #INSERT INTO dept VALUES (50, «ПРОДУКЦИЯ», «САН-ФРАНЦИСКО»);
     #INSERT INTO Customers (city, cname, cnum) VALUES (‘London’, ‘Hoffman’, 2001);
-        ff = "INSERT INTO " + self.table_name+" (" + ", ".join(kwargs.keys()) \
-           + "') VALUES (" + ", ".join(kwargs.values()) + ")"
+
         flds = ', '.join(k for (k, v) in kwargs.items())
-        print(flds)
+        vals = ', '.join(str("'" + k + "'") for (k, v) in kwargs.items())
+        ff= "INSERT INTO (" + flds + ") VALUES (" + vals + ")"
+        print(ff)
 
     def update(self,*args,**kwargs):
         ff = ' where ' + ' and '.join(k + '='+str(v) for (k,v) in self._filter.items())
