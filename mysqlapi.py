@@ -24,7 +24,8 @@ class MyTable(object):
     def save(self):
         self.conn.commit()
 
-    def values (self, *args, **kwargs):
+    def values(self, *args, **kwargs):
+
         if self._filter == {}:
             ff = ''
         else:

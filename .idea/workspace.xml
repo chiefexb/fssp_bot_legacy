@@ -4,6 +4,7 @@
     <list default="true" id="d6700dc0-9c08-47bd-a51b-b7db04d5b0c4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/config.xml.example" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jobs.py" beforeDir="false" afterPath="$PROJECT_DIR$/jobs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlapi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysqlapi.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +33,8 @@
       <file leaf-file-name="mysqlapi.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysqlapi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+            <state relative-caret-position="-644">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="35" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -45,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/jobs.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="404">
-              <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+              <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
               <folding>
                 <element signature="e#34#53#0" expanded="true" />
               </folding>
@@ -119,8 +120,8 @@
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/mysqlapi.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/jobs.py" />
-        <option value="$PROJECT_DIR$/mysqlapi.py" />
         <option value="$PROJECT_DIR$/fsspbotdb/models.py" />
+        <option value="$PROJECT_DIR$/mysqlapi.py" />
         <option value="$PROJECT_DIR$/jobs.py" />
       </list>
     </option>
@@ -455,16 +456,6 @@
         <state relative-caret-position="-198" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysqlapi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fsspbotdb/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -482,10 +473,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mysqlapi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-644">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jobs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
-          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
           <folding>
             <element signature="e#34#53#0" expanded="true" />
           </folding>
