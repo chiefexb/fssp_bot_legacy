@@ -14,17 +14,20 @@ def search_physical():
 
 
 def main():
-
+# if
     p = MyData('/home/f.cnf', 'fsspbotdb')
-    setting = p.get_table('setting')
-    setting.filter(valuename='FSSPTOKEN')
-    fssp_token = setting.values()[0][1]
-    fssp = FsspApi(fssp_token)
-    fssp.set_firstname('Сергей')
-    fssp.set_lastname('Шило')
-    fssp.set_region('09')
-    fssp.search_phisycal()
-    #job = p.get_table('job')
+    #setting = p.get_table('setting')
+    #setting.filter(valuename='FSSPTOKEN')
+    #fssp_token = setting.values()[0][1]
+    ##fssp = FsspApi(fssp_token)
+    #fssp.set_firstname('Сергей')
+    #fssp.set_lastname('Шило')
+    ##fssp.set_region('09')
+    #fssp.search_phisycal()
+    job = p.get_table('job')
+    job.filter(status='1')
+    val=job.values()
+    print (val)
     # while 1:
     print('TASK ' + fssp.task)
 
