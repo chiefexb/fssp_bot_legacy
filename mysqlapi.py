@@ -50,7 +50,7 @@ class MyTable(object):
         self._filter = {}
         self.conn = conn
         self.cursor = self.conn.cursor()
-        self.table_name = prefix +' ' +table_name
+        self.table_name = prefix +'_' +table_name
 
 
 class MyData():
