@@ -9,7 +9,7 @@ def start_job(**kwargs):
     p = MyData('/home/f.cnf', 'fsspbotdb')
     job = p.get_table('job')
     dt=datetime.now()
-    job.add(start_date=dt, job_name='search_ip', status='1')
+    job.add(start_date=str(dt), job_name='search_ip', status='1')
     job.save()
 
 
