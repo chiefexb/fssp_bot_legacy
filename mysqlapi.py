@@ -16,6 +16,7 @@ class MyTable(object):
         vals = ', '.join(str("'" + v + "'") for (k, v) in kwargs.items())
         ff= "INSERT INTO " + self.table_name + " (" + flds + ") VALUES (" + vals + ")"
         print(ff)
+        self.cursor.execute(ff)
 
     def update(self,*args,**kwargs):
         ff = ' where ' + ' and '.join(k + '='+str(v) for (k,v) in self._filter.items())
