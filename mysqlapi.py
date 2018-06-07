@@ -11,7 +11,7 @@ class MyTable(object):
  
     #INSERT INTO dept VALUES (50, «ПРОДУКЦИЯ», «САН-ФРАНЦИСКО»);
     #INSERT INTO Customers (city, cname, cnum) VALUES (‘London’, ‘Hoffman’, 2001);
-        ff='INSERT INTO '+ self.table_name+' ('+  ', '.join(kwargs.keys()) \
+        ff = 'INSERT INTO ' + self.table_name+' (' + ', '.join(kwargs.keys()) \
            + ') VALUES (' + ', '.join(kwargs.values()) + ')'
         print(ff)
 
