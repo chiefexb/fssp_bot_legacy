@@ -18,7 +18,7 @@ def main():
     p = MyData('/home/f.cnf', 'fsspbotdb')
     setting = p.get_table('setting')
     setting.filter(valuename='FSSPTOKEN')
-    val = setting.values()
+    val = setting.values()[0][1]
     print(val)
     job = p.get_table('job')
     # while 1:
