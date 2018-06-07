@@ -3,7 +3,7 @@ from mysql import connector
 
 
 class MyTable(object):
-
+#byCol = {cl:i for i,(cl,type, a, b, c,d,e) in enumerate(Cursor.description
     def add(self, *args, **kwargs):
  
     #INSERT INTO dept VALUES (50, «ПРОДУКЦИЯ», «САН-ФРАНЦИСКО»);
@@ -32,13 +32,15 @@ class MyTable(object):
         else:
             sq = 'select ' + ', '.join(args) + ' from ' + self.table_name + ff
             print(sq)
-            try:
-                self.cursor.execute(sq)
-            except:
-                print(sq)
+        try:
+            self.cursor.execute(sq)
+        except:
+            print(sq)
+            r='err'
+        else:
+            r=self.cursor.fetchall()
 
-
-        return self.cursor.fetchall()
+        return r 
         
     def filter(self, *args, **kwargs):
         print (kwargs)
