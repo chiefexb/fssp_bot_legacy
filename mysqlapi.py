@@ -13,7 +13,7 @@ class MyTable(object):
     #INSERT INTO Customers (city, cname, cnum) VALUES (‘London’, ‘Hoffman’, 2001);
         ff = "INSERT INTO " + self.table_name+" (" + ", ".join(kwargs.keys()) \
            + "') VALUES (" + ", ".join(kwargs.values()) + ")"
-        flds = ', '.join(k) for (k, v) in kwargs.items()
+        flds = ', '.join(k for (k, v) in kwargs.items())
         print(flds)
 
     def update(self,*args,**kwargs):
