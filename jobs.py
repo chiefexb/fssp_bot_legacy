@@ -22,6 +22,7 @@ def main():
     fssp = FsspApi(fssp_token)
     fssp.set_firstname('Сергей')
     fssp.set_lastname('Шило')
+    fssp.set_region('09')
     tsk = fssp.search_phisycal()
     job = p.get_table('job')
     # while 1:
