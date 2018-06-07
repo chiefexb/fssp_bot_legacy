@@ -29,7 +29,7 @@ class MyTable(object):
         if self._filter == {}:
             ff = ''
         else:
-            ff = ' where ' + ' and '.join(k + '=' + str(v) for (k, v) in self._filter.items())
+            ff = ' where ' + ' and '.join(k + '=' + str("'"+v+"'") for (k, v) in self._filter.items())
         if len(args) == 0:
             sq = 'select * from ' + self.table_name + ff
             print (sq)
