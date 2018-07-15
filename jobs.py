@@ -29,7 +29,7 @@ def main():
     val=job.values()
     print (val)
     # while 1:
-    print('TASK ' + fssp.task)
+    #print('TASK ' + fssp.task)
 
 #p=Setting.objects.filter(valuename="VIBERTOKEN")
 #             tok=p.values()[0]['value']

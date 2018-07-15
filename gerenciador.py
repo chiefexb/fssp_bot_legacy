@@ -9,7 +9,7 @@ class Worker():
     def __init__(self, *args):
         pass
 
-    
+
 
 
 class Client():
