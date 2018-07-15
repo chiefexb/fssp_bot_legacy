@@ -52,7 +52,7 @@ class Cookie (models.Model):
 
 class Job (models.Model):
     start_date = models.DateTimeField()
-    end_date = models.DateTimeField(null='True')
+    end_date = models.DateTimeField(null='True',blank=True)
     status = models.BigIntegerField(null='False')
     job_name = models.CharField(max_length=1000, null='False', blank='False', verbose_name='Название Джоба')
     data = models.CharField(max_length=1000, null='False', blank='False', verbose_name='DATA')
