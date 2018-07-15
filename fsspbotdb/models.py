@@ -55,7 +55,7 @@ class Job (models.Model):
     end_date = models.DateTimeField(null='True')
     status = models.BigIntegerField(null='False')
     job_name = models.CharField(max_length=1000, null='False', blank='False', verbose_name='Название Джоба')
-    data = models.models.CharField(max_length=1000, null='False', blank='False', verbose_name='DATA')
+    data = models.CharField(max_length=1000, null='False', blank='False', verbose_name='DATA')
     def __str__(self):
 
         return str(self.id )
