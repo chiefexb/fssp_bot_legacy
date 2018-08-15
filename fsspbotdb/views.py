@@ -31,7 +31,7 @@ def webhook(request):
     # logging.info('WEBHOOK '+ str( request.body) )
     if request.method == "POST":
 
-            mes = viber.message_request(request.body.decode() )
+            #mes = viber.message_request(request.body.decode() )
             logging.info('WH' + str(request.body.decode()))
 
 
