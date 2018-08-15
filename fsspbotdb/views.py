@@ -28,7 +28,7 @@ def index (request):
 @csrf_exempt
 def webhook(request):
     # html=''
-    # logging.info('WEBHOOK '+ str( request.body) )
+    logging.info('WEBHOOK '+ str( request.body) )
     if request.method == "POST":
 
             #mes = viber.message_request(request.body.decode() )
