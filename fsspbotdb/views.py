@@ -33,7 +33,7 @@ def webhook(request):
         mes= request.body.decode('UTF8')
         j= json.loads(mes)
         logging.info('QResult' + str(j['queryResult']['parameters']))
-
+        resp=c['fulfillmentText']='Ждите'
         # html = request.body.decode()
 
-    return HttpResponse (status=200)
+    return HttpResponse (json.dumps(resp))
