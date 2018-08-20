@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6700dc0-9c08-47bd-a51b-b7db04d5b0c4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/fsspbotdb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fsspbotdb/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="d6700dc0-9c08-47bd-a51b-b7db04d5b0c4" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,8 +132,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fsspbotdb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+            <state relative-caret-position="407">
+              <caret line="36" column="47" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="51" />
               <folding>
                 <element signature="e#38#74#0" expanded="true" />
               </folding>
@@ -458,8 +456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fsspbotdb/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        <state relative-caret-position="407">
+          <caret line="36" column="47" lean-forward="true" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="51" />
           <folding>
             <element signature="e#38#74#0" expanded="true" />
           </folding>
