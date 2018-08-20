@@ -36,4 +36,4 @@ def webhook(request):
         resp=c['fulfillmentText']='Ждите'
         # html = request.body.decode()
 
-    return HttpResponse (json.dumps(resp))
+    return HttpResponse (status=200,json=json.dumps(resp))
