@@ -27,7 +27,7 @@ def index (request):
 
 @csrf_exempt
 def webhook(request):
-    # html='' 11
+    html='11'
     logging.info('ALL MESS: '+ str( request.body) )
     if request.method == "POST":
         mes= request.body.decode('UTF8')
@@ -36,4 +36,4 @@ def webhook(request):
         resp=c['fulfillmentText']='Ждите'
         # html = request.body.decode()
 
-    return HttpResponse (status=200,json=json.dumps(resp))
+    return HttpResponse (html)
