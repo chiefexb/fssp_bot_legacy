@@ -30,9 +30,11 @@ def webhook(request):
     # html=''
     logging.info('WEBHOOK '+ str( request.body) )
     if request.method == "POST":
-    #mes = viber.message_request(request.body.decode() )
-    logging.info('WH' + str(request.body.decode('UTF8')))
-    j= json.loads(request.body.decode())
+    mes= request.body.decode('UTF8')
+    j= json.loads(mes)
+
+    logging.info('WH' + str(j['queryResult']['parameters']))
+
         # html = request.body.decode()
 
     return HttpResponse (status=200)
