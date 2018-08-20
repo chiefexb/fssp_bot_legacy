@@ -27,7 +27,7 @@ def index (request):
 
 @csrf_exempt
 def webhook(request):
-    # html=''
+    # html='' 11
     logging.info('ALL MESS: '+ str( request.body) )
     if request.method == "POST":
         mes= request.body.decode('UTF8')
