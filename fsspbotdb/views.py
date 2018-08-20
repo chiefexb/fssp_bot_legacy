@@ -28,11 +28,11 @@ def index (request):
 @csrf_exempt
 def webhook(request):
     # html=''
-    #logging.info('WEBHOOK '+ str( request.body) )
+    logging.info('ALL MESS: '+ str( request.body) )
     if request.method == "POST":
         mes= request.body.decode('UTF8')
         j= json.loads(mes)
-        logging.info('WH' + str(j['queryResult']['parameters']))
+        logging.info('QResult' + str(j['queryResult']['parameters']))
 
         # html = request.body.decode()
 
