@@ -1,5 +1,6 @@
 # from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 # from django.template.loader import get_template
 # from django.template import Context
 import  json
@@ -33,7 +34,8 @@ def webhook(request):
         mes= request.body.decode('UTF8')
         j= json.loads(mes)
         logging.info('QResult' + str(j['queryResult']['parameters']))
-        resp=c['fulfillmentText']='Ждите'
-        html = json.dumps(c)
+        c={}
+        c['fulfillmentText']='Ждите'
+        html = JsonResponse(resp)
 
     return HttpResponse (html)
