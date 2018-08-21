@@ -5,7 +5,7 @@ from django.http import JsonResponse
 # from django.template import Context
 import  json
 from fsspbotdb.models import *
-from api import viber
+from api.fsspapi import *
 import datetime
 # from django.shortcuts import get_object_or_404
 # import requests
@@ -32,11 +32,20 @@ def webhook(request):
     c = {}
     logging.info('ALL MESS: '+ str( request.body) )
     if request.method == "POST":
-        mes= request.body.decode('UTF8')
-        j= json.loads(mes)
+        mes = request.body.decode('UTF8')
+        j = json.loads(mes)
+        p = Setting.objects.filter(valuename='FSSPTOKEN')
+        fssptok=p.values()[0]['value']
+        fssp=FsspApi(fssptok)
+        fssp.lastname=j['queryResult']['parameters']['lastname']
+        fssp.name=j['queryResult']['parameters']['name']
+        fssp.region='09'
+        fssp.search_phisycal()
+        fssp.wait_for()
+
         logging.info('QResult' + str(j['queryResult']['parameters']))
 
-        c['fulfillmentText']='Ждите'
+        c['fulfillmentText']=fssp.result
         html = JsonResponse(c)
 
     return HttpResponse (html)
