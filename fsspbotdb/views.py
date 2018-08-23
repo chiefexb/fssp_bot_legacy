@@ -46,9 +46,10 @@ def webhook(request):
 
         mess=fssp.result
         mm=''
+        c={}
         for m in mess:
             mm=mm+fssp.format_ip(m)
-        logging.info('QResult' + str(mm)
+        logging.info('QResult' + str(mm) )
         c['fulfillmentText']=mm
         html = JsonResponse(c)
 

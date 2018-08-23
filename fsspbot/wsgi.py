@@ -14,8 +14,11 @@ import site
 #from . import secret
 path2 = '/home/fssp_telegram_bot'
 path3 = '/home/fssp_telegram_bot/fsspbot'
+path4 = '/home/fssp_telegram_bot/venv/lib/python3.5/site-packages'
 sys.path.append(path2)
 sys.path.append(path3)
+sys.path.append(path4)
+
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fsspbot.settings")
