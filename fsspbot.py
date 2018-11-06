@@ -24,7 +24,7 @@ async def handler(request):
     headers = {
         'Content-Type': 'application/json'
     }
-    log
+    logging.info(data)
     message = {
         'chat_id': data['message']['chat']['id'],
         'text': data
