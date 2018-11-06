@@ -1,24 +1,33 @@
-import asyncio
+#import asyncio
 import aiohttp
+import logging
 from aiohttp import web
 import json
 from lxml import etree
 #from os import *
 #import sys
-f=open('../bot.xml')
+f = open('../bot.xml')
 cfg = etree.parse(f)
-cfgroot=cfg.getroot()
-TOKEN=cfgroot.find('tel').text
+cfg_root = cfg.getroot()
+TOKEN = cfg_root.find('tel').text
 API_URL = 'https://api.telegram.org/bot%s/sendMessage' % TOKEN
+logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s',
+                    level=logging.DEBUG, filename='/home/bot.log')
+
+async def search_phisycal(self):
+    return 1
+
 
 async def handler(request):
     data = await request.json()
+    logging.info(data)
     headers = {
         'Content-Type': 'application/json'
     }
+    log
     message = {
         'chat_id': data['message']['chat']['id'],
-        'text': data['message']['text']
+        'text': data
     }
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL,
