@@ -1,4 +1,4 @@
-#import asyncio
+import asyncio
 import aiohttp
 import logging
 from aiohttp import web
@@ -17,7 +17,6 @@ logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s',
 async def search_phisycal(self):
     return 1
 
-
 async def handler(request):
     data = await request.json()
     logging.info(data)
@@ -27,8 +26,11 @@ async def handler(request):
     logging.info(data)
     message = {
         'chat_id': data['message']['chat']['id'],
-        'text': data
+        'text': 'Для поиска по базе должников наберите /search'
     }
+
+
+
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL,
                                 data=json.dumps(message),
@@ -39,18 +41,14 @@ async def handler(request):
                 return web.Response(status=500)
     return web.Response(status=200)
 
-#async def init_app(loop):
-app = web.Application( middlewares=[])
-app.router.add_post('/webhook', handler)
-#    return app
 
-#if __name__ == '__main__':
- #   loop = asyncio.get_event_loop()
- #   try:
-#        app = loop.run_until_complete(init_app(loop))
-web.run_app(app, host='0.0.0.0', port=8080)
-#    except Exception as e:
-#        print('Error create server: %r' % e)
-#    finally:
-#        pass
-#    loop.close()
+def main():
+    #loop = asyncio.get_event_loop()
+    app = web.Application() #(loop=loop)
+    app.router.add_post('/webhook', handler)
+    app['sessions'] = {}
+    web.run_app(app, host='localhost', port=8080)
+
+
+if __name__ == '__main__':
+    main()

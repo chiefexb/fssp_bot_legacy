@@ -1,6 +1,8 @@
-https://habr.com/post/314606/
+
 import aiohttp
 import asyncio
+
+base_url = "https://api-ip.fssprus.ru/api/v1.0"
 
 async def fetch(client):
     async with client.get('http://python.org') as resp:
@@ -15,7 +17,6 @@ async def main():
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
 
-  base_url="https://api-ip.fssprus.ru/api/v1.0"
     region=''
     lastname=''
     firstname=''
@@ -25,7 +26,8 @@ loop.run_until_complete(main())
     result=''
     task=''
     token=''
-async with aiohttp.ClientSession() as session:
+
+async def getphysical  (arg)
     async with session.get(base_url+'/search/physical', params= {'token'    :self.token,
          'region'   :self.region,
          'firstname':self.firstname,
