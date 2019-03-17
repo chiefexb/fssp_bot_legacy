@@ -1,0 +1,21 @@
+<scheme>
+    <intent name="start" command="start">
+        <message>Привет, я робот судебный пристав Чем могу быть полезен?
+            <keyboards>
+                <button action="search">Найти задолженность</button>
+            </keyboards>
+
+        </message>
+        <intent name="search" command="search">
+            <message>Выберите регион:
+                <select_region/>
+                <intent name="first_name">
+                     <intent command="last_name">
+
+                     </intent>
+                </intent>
+
+            </message>
+        </intent>
+    </intent>
+</scheme>
