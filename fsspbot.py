@@ -14,12 +14,18 @@ API_URL = 'https://api.telegram.org/bot%s/sendMessage' % TOKEN
 logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s',
                     level=logging.DEBUG, filename='/home/bot.log')
 
+
 async def search_phisycal(self):
+
     return 1
+
+
 async def index(request):
     #name = request.match_info.get('name', "Anonymous")
     text = "Hello"
     return web.Response(text=text)
+
+
 async def handler(request):
     data = await request.json()
     logging.info(data)
@@ -31,8 +37,6 @@ async def handler(request):
         'chat_id': data['message']['chat']['id'],
         'text': 'Для поиска по базе должников наберите /search'
     }
-
-
 
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL,
@@ -46,10 +50,10 @@ async def handler(request):
 
 
 def main():
-    #loop = asyncio.get_event_loop()
-    app = web.Application() #(loop=loop)
+    # loop = asyncio.get_event_loop()
+    app = web.Application()  # (loop=loop)
     app.router.add_post('/webhook', handler)
-    app.router.add_get ('/', index)
+    app.router.add_get('/', index)
     app['sessions'] = {}
     web.run_app(app, host='localhost', port=8080)
 
