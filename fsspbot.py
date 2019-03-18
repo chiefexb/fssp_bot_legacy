@@ -13,7 +13,7 @@ f = open('../bot.xml')
 cfg = etree.parse(f)
 cfg_root = cfg.getroot()
 TOKEN = cfg_root.find('tel').text
-f = open('../scheme.xml')
+f = open('scheme.xml')
 schema = etree.parse(f)
 schema_root = schema.getroot()
 
