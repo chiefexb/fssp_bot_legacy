@@ -12,6 +12,17 @@ def create_tables(engine):
     meta = MetaData()
     meta.create_all(bind=engine, tables=[fact, user_session])
 
+#def upgrade(migrate_engine):
+#    meta = MetaData(bind=migrate_engine)
+#    account = Table('account', meta, autoload=True)
+#    emailc = Column('email', String(128))
+#    emailc.create(account)
+
+
+#def downgrade(migrate_engine):
+#    meta = MetaData(bind=migrate_engine)
+#    account = Table('account', meta, autoload=True)
+#    account.c.email.drop()
 
 # def sample_data(engine):
 #    conn = engine.connect()

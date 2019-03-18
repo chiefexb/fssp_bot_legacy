@@ -4,6 +4,8 @@ import logging
 from aiohttp import web
 import json
 import lxml
+from settings import config
+from models import user_session, fact
 
 f = open('../bot.xml')
 cfg = lxml.etree.parse(f)
@@ -32,6 +34,11 @@ async def handler(request):
         'Content-Type': 'application/json'
     }
     logging.info(data)
+    user_id = data['message'].['from'].['id']
+    intent_name='search'
+    async with app['db'].acquire() as conn:
+        await conn.execute(user_session.insert().values(user_id,intent_name)
+
     message = {
         'chat_id': data['message']['chat']['id'],
         'text': 'Для поиска по базе должников наберите /search'
@@ -48,13 +55,37 @@ async def handler(request):
     return web.Response(status=200)
 
 
+async def init_pg(app):
+    conf = app['config']['postgres']
+    engine = await aiopg.sa.create_engine(
+        database=conf['database'],
+        user=conf['user'],
+        password=conf['password'],
+        host=conf['host'],
+        port=conf['port'],
+        minsize=conf['minsize'],
+        maxsize=conf['maxsize'],
+    )
+    app['db'] = engine
+
+
+async def close_pg(app):
+    app['db'].close()
+    await app['db'].wait_closed()
+
+
 def main():
     # loop = asyncio.get_event_loop()
     app = web.Application()  # (loop=loop)
+    app['config'] = config
     app.router.add_post('/webhook', handler)
     app.router.add_get('/', index)
     app['sessions'] = {}
+
+    app.on_startup.append(init_pg)
+    app.on_cleanup.append(close_pg)
     web.run_app(app, host='localhost', port=8080)
+
 
 
 if __name__ == '__main__':
