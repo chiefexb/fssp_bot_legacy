@@ -10,7 +10,7 @@ DSN = "postgresql://{user}:{password}@{host}:{port}/{database}"
 
 def create_tables(engine):
     meta = MetaData()
-    meta.create_all(bind=engine, tables=[question, choice])
+    meta.create_all(bind=engine, tables=[fact, user_session])
 
 
 # def sample_data(engine):
