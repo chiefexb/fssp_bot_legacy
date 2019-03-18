@@ -39,9 +39,7 @@ async def handler(request):
     user_id = data['message']['from']['id']
     async with request.app['db'].acquire() as conn:
         user_session_rec = await  get_user_session(conn, user_id)
-
-    async with request.app['db'].acquire() as conn:
-        await conn.execute( user_session.insert().values(user_id=user_id, intent_name=intent_name) )
+    logging.info(user_session_rec)
 
     message = {
         'chat_id': data['message']['chat']['id'],
