@@ -3,12 +3,13 @@ import aiohttp
 import logging
 from aiohttp import web
 import json
-import lxml
+from lxml  import etree
 from settings import config
 from models import user_session, fact
+from aiopg.sa import create_engine
 
 f = open('../bot.xml')
-cfg = lxml.etree.parse(f)
+cfg = etree.parse(f)
 cfg_root = cfg.getroot()
 TOKEN = cfg_root.find('tel').text
 API_URL = 'https://api.telegram.org/bot%s/sendMessage' % TOKEN
@@ -34,10 +35,10 @@ async def handler(request):
         'Content-Type': 'application/json'
     }
     logging.info(data)
-    user_id = data['message'].['from'].['id']
+    user_id = data['message']['from']['id']
     intent_name='search'
     async with app['db'].acquire() as conn:
-        await conn.execute(user_session.insert().values(user_id,intent_name)
+        await conn.execute( user_session.insert().values(user_id=user_id, intent_name=intent_name) )
 
     message = {
         'chat_id': data['message']['chat']['id'],
@@ -56,8 +57,9 @@ async def handler(request):
 
 
 async def init_pg(app):
+    print ('init')
     conf = app['config']['postgres']
-    engine = await aiopg.sa.create_engine(
+    engine = await create_engine(
         database=conf['database'],
         user=conf['user'],
         password=conf['password'],
