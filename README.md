@@ -7,10 +7,10 @@
 ## Установка
 
 ## Настройка БД
-```
+````
 psql -U postgres -h localhost
 CREATE DATABASE fsspbot;
 CREATE USER fsspbot WITH PASSWORD 'fssp_pass';
 GRANT ALL PRIVILEGES ON DATABASE fsspbot TO fsspbot;
-```
+````
  
