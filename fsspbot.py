@@ -37,7 +37,7 @@ async def handler(request):
     logging.info(data)
     user_id = data['message']['from']['id']
     intent_name='search'
-    async with app['db'].acquire() as conn:
+    async with request.app['db'].acquire() as conn:
         await conn.execute( user_session.insert().values(user_id=user_id, intent_name=intent_name) )
 
     message = {
