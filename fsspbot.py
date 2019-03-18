@@ -5,8 +5,9 @@ from aiohttp import web
 import json
 from lxml  import etree
 from settings import config
-from models import user_session, fact
+from models import user_session, fact, get_user_session
 from aiopg.sa import create_engine
+from sqlalchemy.sql import select
 
 f = open('../bot.xml')
 cfg = etree.parse(f)
@@ -36,7 +37,9 @@ async def handler(request):
     }
     logging.info(data)
     user_id = data['message']['from']['id']
-    intent_name='search'
+    async with request.app['db'].acquire() as conn:
+        user_session_rec = await  get_user_session(conn, user_id)
+
     async with request.app['db'].acquire() as conn:
         await conn.execute( user_session.insert().values(user_id=user_id, intent_name=intent_name) )
 

@@ -6,16 +6,22 @@
             </keyboards>
 
         </message>
-        <intent name="search" command="search">
-            <message>Выберите регион:
-                <select_region/>
-                <intent name="first_name">
-                     <intent command="last_name">
 
-                     </intent>
-                </intent>
-
-            </message>
-        </intent>
+    </intent>
+    <intent name="search" command="search">
+        <message>Выберите регион:
+        </message>
+    </intent>
+    <intent name="ask_name" >
+        <message>Имя для поиска?
+        </message>
+    </intent>
+    <intent name="ask_lastname" >
+        <message>Фамилия?
+        </message>
+    </intent>
+     <intent name="result" >
+        <message>Ищем...
+        </message>
     </intent>
 </scheme>
