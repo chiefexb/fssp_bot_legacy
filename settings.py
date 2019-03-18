@@ -1,12 +1,13 @@
 import pathlib
 import yaml
+from yaml import load, dump
+from yaml import Loader, Dumper
 
 BASE_DIR = pathlib.Path(__file__).parent.parent
 config_path = BASE_DIR / 'bot.yaml'
 
 def get_config(path):
-    with open(path) as f:
-        config = yaml.load(f)
-    return config
+    stream = open(path, 'r')
+    return load(stream, Loader=Loader) 
 
 config = get_config(config_path)
