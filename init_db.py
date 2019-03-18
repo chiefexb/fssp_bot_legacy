@@ -2,7 +2,7 @@
 from sqlalchemy import create_engine, MetaData
 
 from settings import config
-from models import question, choice
+from models import user_session, fact
 
 
 DSN = "postgresql://{user}:{password}@{host}:{port}/{database}"
