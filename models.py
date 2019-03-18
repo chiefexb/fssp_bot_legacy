@@ -29,13 +29,13 @@ fact = Table(
 async def get_user_session(conn, user_id):
     result = await conn.execute(
         user_session.select()
-        .where(user_session.c.id == user_id))
+        .where(user_session.c.user_id == user_id))
     user_session_record = await result.first()
     if not user_session_record:
         await conn.execute(user_session.insert().values(user_id=user_id, intent_name='start'))
     result = await conn.execute(
         user_session.select()
-            .where(user_session.c.id == user_id))
+        .where(user_session.c.user_id == user_id))
     user_session_record = await result.first()
 
     return user_session_record
