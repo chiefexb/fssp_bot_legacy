@@ -13,9 +13,16 @@ f = open('../bot.xml')
 cfg = etree.parse(f)
 cfg_root = cfg.getroot()
 TOKEN = cfg_root.find('tel').text
+f = open('../scheme.xml')
+schema = etree.parse(f)
+schema_root = schema.getroot()
+
+
 API_URL = 'https://api.telegram.org/bot%s/sendMessage' % TOKEN
 logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s',
                     level=logging.DEBUG, filename='/home/bot.log')
+
+
 
 
 async def search_phis(self):
@@ -41,9 +48,14 @@ async def handler(request):
         user_session_rec = await  get_user_session(conn, user_id)
     logging.info(user_session_rec)
 
+    a=schema_root.findall('intent')
+    for i in a:
+        if i.attrib['name'] == user_session_rec.intent_name:
+            m=i.find('message')
+            message_text = m.text
     message = {
         'chat_id': data['message']['chat']['id'],
-        'text': 'Для поиска по базе должников наберите /search'
+        'text': message_text
     }
 
     async with aiohttp.ClientSession() as session:
@@ -84,6 +96,7 @@ def main():
     app.router.add_post('/webhook', handler)
     app.router.add_get('/', index)
     app['sessions'] = {}
+    app['schema'] = schema_root
 
     app.on_startup.append(init_pg)
     app.on_cleanup.append(close_pg)

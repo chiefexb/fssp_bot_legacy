@@ -39,3 +39,5 @@ async def get_user_session(conn, user_id):
     user_session_record = await result.first()
 
     return user_session_record
+
+

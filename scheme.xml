@@ -8,19 +8,19 @@
         </message>
 
     </intent>
-    <intent name="search" command="search">
+    <intent name="search" command="search" action="ask_name">
         <message>Выберите регион:
         </message>
     </intent>
-    <intent name="ask_name" >
+    <intent name="ask_name" fact="region" action="ask_lastname">
         <message>Имя для поиска?
         </message>
     </intent>
-    <intent name="ask_lastname" >
+    <intent name="ask_lastname" action="result">
         <message>Фамилия?
         </message>
     </intent>
-     <intent name="result" >
+     <intent name="result" action="start">
         <message>Ищем...
         </message>
     </intent>
