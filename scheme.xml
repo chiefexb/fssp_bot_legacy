@@ -1,9 +1,7 @@
 <scheme>
-    <intent name="start" command="start">
+    <intent name="start" command="start" action="search">
         <message>Привет, я робот судебный пристав Чем могу быть полезен?
-            <keyboards>
-                <button action="search">Найти задолженность</button>
-            </keyboards>
+
 
         </message>
 
