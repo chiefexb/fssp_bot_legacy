@@ -52,12 +52,19 @@ async def handler(request):
     for i in a:
         if i.attrib['name'] == user_session_rec.intent_name:
             m=i.find('message')
+            act=i.attrib['action']
             message_text = m.text
     message = {
         'chat_id': data['message']['chat']['id'],
         'text': message_text
     }
-
+    async with request.app['db'].acquire() as conn:
+        result = await conn.execute(
+            choice.update()
+            .returning(*user_session.c)
+            .where(user_session.c.user_id == user_id)
+            .values(intent_name=act))
+        user_session_rec = await  get_user_session(conn, user_id)
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL,
                                 data=json.dumps(message),
