@@ -7,6 +7,7 @@ from models import question, choice
 
 DSN = "postgresql://{user}:{password}@{host}:{port}/{database}"
 
+
 def create_tables(engine):
     meta = MetaData()
     meta.create_all(bind=engine, tables=[question, choice])

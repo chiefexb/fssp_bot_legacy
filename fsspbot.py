@@ -3,11 +3,10 @@ import aiohttp
 import logging
 from aiohttp import web
 import json
-from lxml import etree
-#from os import *
-#import sys
+import lxml
+
 f = open('../bot.xml')
-cfg = etree.parse(f)
+cfg = lxml.etree.parse(f)
 cfg_root = cfg.getroot()
 TOKEN = cfg_root.find('tel').text
 API_URL = 'https://api.telegram.org/bot%s/sendMessage' % TOKEN
@@ -15,7 +14,7 @@ logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s',
                     level=logging.DEBUG, filename='/home/bot.log')
 
 
-async def search_phisycal(self):
+async def search_phis(self):
 
     return 1
 
