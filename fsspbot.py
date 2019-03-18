@@ -60,7 +60,7 @@ async def handler(request):
     }
     async with request.app['db'].acquire() as conn:
         result = await conn.execute(
-            choice.update()
+            user_session.update()
             .returning(*user_session.c)
             .where(user_session.c.user_id == user_id)
             .values(intent_name=act))
