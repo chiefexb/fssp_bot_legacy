@@ -60,9 +60,8 @@ async def handler(request):
 
     if len(fact_name)>0 :
         fact_value = data['message']['text']
-        logging.info(u'fact'+str(data['message']))
+        logging.info(u'fact'+str(data['message']['text']))
         async with request.app['db'].acquire() as conn:
-
             await  add_fact(conn, user_id,fact_name=fact_name, fact_value=fact_value)
         async with request.app['db'].acquire() as conn:
             result = await conn.execute(
