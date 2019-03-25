@@ -33,7 +33,7 @@ async def add_fact(conn, user_id, fact_name, fact_value):
     fact_record = await result.first()
     if not fact_record:
         await conn.execute(fact.insert().values(user_id=user_id, fact_name=fact_name), fact_value=fact_value)
-    else:
+    
 
 
 
