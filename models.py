@@ -44,7 +44,8 @@ async def get_user_session(conn, user_id):
 async def add_fact(conn, user_id, fact_name, fact_value):
     result = await conn.execute(
         fact.select()
-        .where(fact.c.user_id == user_id).where(fact.c.fact_name == fact_name))
+        .where(fact.c.user_id == user_id)
+        .where(fact.c.fact_name == fact_name))
     fact_record = await result.first()
     if not fact_record:
         await conn.execute(fact.insert().values(user_id=user_id, fact_name=fact_name), fact_value=fact_value)

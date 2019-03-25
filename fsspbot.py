@@ -64,7 +64,7 @@ async def handler(request):
         logging.info(u'fact'+str(data['message']['text']))
         if fact_value is not None:
             async with request.app['db'].acquire() as conn:
-                await  add_fact(conn, user_id,fact_name=fact_name, fact_value=fact_value)
+                await  add_fact(conn, user_id, fact_name, fact_value)
             async with request.app['db'].acquire() as conn:
                 result = await conn.execute(
                     fact.update()
