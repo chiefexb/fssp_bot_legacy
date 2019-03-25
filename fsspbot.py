@@ -56,22 +56,22 @@ async def handler(request):
             act=i.attrib['action']
             message_text = m.text
             if 'fact' in i.attrib.keys():
-                fact_name=i.attrib['fact']
+                f_name = i.attrib['fact']
 
-    if len(fact_name) > 0:
-        fact_value = data['message'].get('text')
+    if len(f_name) > 0:
+        f_value = data['message'].get('text')
 
         logging.info(u'fact'+str(data['message']['text']))
-        if fact_value is not None:
+        if f_value is not None:
             async with request.app['db'].acquire() as conn:
-                await  add_fact(conn, user_id, fact_name, fact_value)
+                await  add_fact(conn, user_id, f_name, f_value)
             async with request.app['db'].acquire() as conn:
                 result = await conn.execute(
                     fact.update()
                     .returning(*fact.c)
                     .where(fact.c.user_id == user_id)
-                    .where(fact.c.fact_name == fact_name)
-                    .values(fact_value=fact_value))
+                    .where(fact.c.fact_name == f_name)
+                    .values(fact_value=f_value))
 
                 async with request.app['db'].acquire() as conn:
                     result = await conn.execute(
