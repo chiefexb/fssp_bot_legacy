@@ -49,6 +49,7 @@ async def handler(request):
     logging.info(user_session_rec)
 
     a=schema_root.findall('intent')
+    fact_name=''
     for i in a:
         if i.attrib['name'] == user_session_rec.intent_name:
             m=i.find('message')
@@ -57,8 +58,7 @@ async def handler(request):
             if 'fact' in i.attrib.keys():
                 fact_name=i.attrib['fact']
 
-
-    if fact_name:
+    if len(fact_name) > 0:
         async with request.app['db'].acquire() as conn:
             fact_value= data['message']['text']
             await  add_fact (conn, user_id,fact_value=fact_value)
