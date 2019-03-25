@@ -5,7 +5,7 @@ from aiohttp import web
 import json
 from lxml  import etree
 from settings import config
-from models import user_session, fact, get_user_session
+from models import user_session, fact, get_user_session , add_fact
 from aiopg.sa import create_engine
 from sqlalchemy.sql import select
 
@@ -54,6 +54,21 @@ async def handler(request):
             m=i.find('message')
             act=i.attrib['action']
             message_text = m.text
+            if 'fact' in i.attrib.keys():
+                fact_name=i.attrib['fact']
+
+
+    if fact_name:
+        async with request.app['db'].acquire() as conn:
+            fact_value= data['message']['text']
+            await  add_fact (conn, user_id,fact_value=fact_value)
+        async with request.app['db'].acquire() as conn:
+            result = await conn.execute(
+                fact.update()
+                .returning(*fact.c)
+                .where(fact.c.user_id == user_id)
+                .where(fact.c.fact_name == fact_name)
+                .values(fact_value=fact_value))
     message = {
         'chat_id': data['message']['chat']['id'],
         'text': message_text
@@ -64,7 +79,7 @@ async def handler(request):
             .returning(*user_session.c)
             .where(user_session.c.user_id == user_id)
             .values(intent_name=act))
-        user_session_rec = await  get_user_session(conn, user_id)
+        #user_session_rec = await  get_user_session(conn, user_id)
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL,
                                 data=json.dumps(message),
