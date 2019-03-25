@@ -58,9 +58,11 @@ async def handler(request):
             if 'fact' in i.attrib.keys():
                 fact_name=i.attrib['fact']
 
-    if len(fact_name) > 0:
+    if len(fact_name)>0 :
+        fact_value = data['message']['text']
+        logging.info(u'fact'+data['message'])
         async with request.app['db'].acquire() as conn:
-            fact_value= data['message']['text']
+
             await  add_fact(conn, user_id,fact_name=fact_name, fact_value=fact_value)
         async with request.app['db'].acquire() as conn:
             result = await conn.execute(
@@ -69,16 +71,18 @@ async def handler(request):
                 .where(fact.c.user_id == user_id)
                 .where(fact.c.fact_name == fact_name)
                 .values(fact_value=fact_value))
+
+            async with request.app['db'].acquire() as conn:
+                result = await conn.execute(
+                    user_session.update()
+                    .returning(*user_session.c)
+                    .where(user_session.c.user_id == user_id)
+                    .values(intent_name=act))
     message = {
         'chat_id': data['message']['chat']['id'],
         'text': message_text
     }
-    async with request.app['db'].acquire() as conn:
-        result = await conn.execute(
-            user_session.update()
-            .returning(*user_session.c)
-            .where(user_session.c.user_id == user_id)
-            .values(intent_name=act))
+
         #user_session_rec = await  get_user_session(conn, user_id)
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL,
