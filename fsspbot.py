@@ -61,7 +61,7 @@ async def handler(request):
     if len(fact_name) > 0:
         async with request.app['db'].acquire() as conn:
             fact_value= data['message']['text']
-            await  add_fact (conn, user_id,fact_value=fact_value)
+            await  add_fact(conn, user_id,fact_name=fact_name, fact_value=fact_value)
         async with request.app['db'].acquire() as conn:
             result = await conn.execute(
                 fact.update()
