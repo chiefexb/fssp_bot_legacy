@@ -48,8 +48,8 @@ async def add_fact(conn, user_id, f_name, f_value):
         .where(fact.c.fact_name == f_name))
     fact_record = await result.first()
     if not fact_record:
-        await conn.execute(fact.insert().values(user_id=user_id, fact_name=f_name), fact_value=f_value)
-
+        if f_value is not None:
+            await conn.execute(fact.insert().values(user_id=user_id, fact_name=f_name), fact_value=f_value)
 
 
 
