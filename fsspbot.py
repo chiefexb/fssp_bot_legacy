@@ -71,13 +71,13 @@ async def handler(request):
                     .where(fact.c.user_id == user_id)
                     .where(fact.c.fact_name == f_name)
                     .values(fact_value=f_value))
-
-                async with request.app['db'].acquire() as conn:
-                    result = await conn.execute(
-                        user_session.update()
-                        .returning(*user_session.c)
-                        .where(user_session.c.user_id == user_id)
-                        .values(intent_name=act))
+    if user_session_rec.intent_name=='start' or len(f_name) > 0:
+        async with request.app['db'].acquire() as conn:
+            result = await conn.execute(
+                user_session.update()
+                .returning(*user_session.c)
+                .where(user_session.c.user_id == user_id)
+                .values(intent_name=act))
     message = {
         'chat_id': data['message']['chat']['id'],
         'text': message_text
