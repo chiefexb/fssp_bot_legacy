@@ -49,7 +49,7 @@ async def handler(request):
     logging.info(user_session_rec)
 
     a=schema_root.findall('intent')
-    fact_name=''
+    f_name = ''
     for i in a:
         if i.attrib['name'] == user_session_rec.intent_name:
             m=i.find('message')
@@ -60,7 +60,6 @@ async def handler(request):
 
     if len(f_name) > 0:
         f_value = data['message'].get('text')
-        data['message'].get('text')
         logging.info(u'fact'+str(data['message']['text']) +';'+str(len(data['message']['text'])))
         if f_value is not None:
             async with request.app['db'].acquire() as conn:
