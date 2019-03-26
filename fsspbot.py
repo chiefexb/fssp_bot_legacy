@@ -61,7 +61,7 @@ async def handler(request):
     if len(f_name) > 0:
         f_value = data['message'].get('text')
         logging.info(u'fact'+str(data['message']['text']) +';'+str(len(data['message']['text'])))
-        if f_value is not None:
+        if len (f_value) >1:
             async with request.app['db'].acquire() as conn:
                 await  add_fact(conn, user_id, f_name, f_value)
             async with request.app['db'].acquire() as conn:
@@ -71,7 +71,7 @@ async def handler(request):
                     .where(fact.c.user_id == user_id)
                     .where(fact.c.fact_name == f_name)
                     .values(fact_value=f_value))
-    if user_session_rec.intent_name=='start' or len(data['message'].get('text')) > 0:
+    if user_session_rec.intent_name=='start' or len(data['message'].get('text')) > 1:
         async with request.app['db'].acquire() as conn:
             result = await conn.execute(
                 user_session.update()
