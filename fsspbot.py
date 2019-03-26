@@ -71,7 +71,7 @@ async def handler(request):
                     .where(fact.c.user_id == user_id)
                     .where(fact.c.fact_name == f_name)
                     .values(fact_value=f_value))
-    if user_session_rec.intent_name=='start' or len(f_name) > 0:
+    if user_session_rec.intent_name=='start' or len(data['message'].get('text')) > 0:
         async with request.app['db'].acquire() as conn:
             result = await conn.execute(
                 user_session.update()
