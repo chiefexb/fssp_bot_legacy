@@ -1,4 +1,6 @@
 # db.py
+import logging
+
 from sqlalchemy import (
     MetaData, Table, Column, ForeignKey,
     Integer, String, Date
