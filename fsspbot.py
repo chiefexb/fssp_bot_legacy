@@ -50,6 +50,7 @@ async def handler(request):
 
     a=schema_root.findall('intent')
     f_name = ''
+    act=''
     for i in a:
         if i.attrib['name'] == user_session_rec.intent_name:
             m=i.find('message')
@@ -57,11 +58,12 @@ async def handler(request):
             message_text = m.text
             if 'fact' in i.attrib.keys():
                 f_name = i.attrib['fact']
+    f_value = data['message'].get('text')
+    logging.info(u'fact' + str(data['message']['text']) + ';' + str(len(data['message']['text'])))
 
     if len(f_name) > 0:
-        f_value = data['message'].get('text')
-        logging.info(u'fact'+str(data['message']['text']) +';'+str(len(data['message']['text'])))
-        if len (f_value) >1:
+
+        if len (f_value) > 1:
             async with request.app['db'].acquire() as conn:
                 await  add_fact(conn, user_id, f_name, f_value)
             async with request.app['db'].acquire() as conn:
@@ -71,9 +73,16 @@ async def handler(request):
                     .where(fact.c.user_id == user_id)
                     .where(fact.c.fact_name == f_name)
                     .values(fact_value=f_value))
-    if user_session_rec.intent_name=='start' or len(data['message'].get('text')) > 1:
+    if user_session_rec.intent_name == 'start' and len(data['message'].get('text')) > 1:
         async with request.app['db'].acquire() as conn:
-            result = await conn.execute(
+            await conn.execute(
+                user_session.update()
+                .returning(*user_session.c)
+                .where(user_session.c.user_id == user_id)
+                .values(intent_name=act))
+    elif len(data['message'].get('text')) > 1:
+        async with request.app['db'].acquire() as conn:
+            await conn.execute(
                 user_session.update()
                 .returning(*user_session.c)
                 .where(user_session.c.user_id == user_id)
@@ -83,7 +92,7 @@ async def handler(request):
         'text': message_text
     }
 
-        #user_session_rec = await  get_user_session(conn, user_id)
+# user_session_rec = await  get_user_session(conn, user_id)
     async with aiohttp.ClientSession() as session:
         async with session.post(API_URL,
                                 data=json.dumps(message),
