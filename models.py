@@ -3,7 +3,8 @@ from sqlalchemy import (
     MetaData, Table, Column, ForeignKey,
     Integer, String, Date
 )
-
+logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s',
+                    level=logging.DEBUG, filename='/home/bot_m.log')
 meta = MetaData()
 
 user_session = Table(
@@ -26,17 +27,17 @@ fact = Table(
 )
 
 
-async def get_user_session(conn, user_id):
+async def get_user_session(conn, uid):
 
     result = await conn.execute(
         user_session.select()
         .where(user_session.c.user_id == user_id))
     user_session_record = await result.first()
     if not user_session_record:
-        await conn.execute(user_session.insert().values(user_id=user_id, intent_name='start'))
+        await conn.execute(user_session.insert().values(user_id=uid, intent_name='start'))
     result = await conn.execute(
         user_session.select()
-        .where(user_session.c.user_id == user_id))
+        .where(user_session.c.user_id == uid))
     user_session_record = await result.first()
     return user_session_record
 
@@ -47,6 +48,7 @@ async def add_fact(conn, uid, f_name, f_value):
         .where(fact.c.user_id == uid)
         .where(fact.c.fact_name == f_name))
     fact_record = await result.first()
+    logging.info('f_value= ' + f_value)
     if not fact_record:
         if f_value is not None:
             await conn.execute(fact.insert().values(user_id=uid, fact_name=f_name), fact_value=f_value)
