@@ -55,6 +55,7 @@ async def add_fact(conn, uid, f_name, f_value):
     if not fact_record:
         if f_value is not None:
             await conn.execute(fact.insert().values(user_id=uid, fact_name=f_name, fact_value=f_value) )
+            await conn.commit()
 
 
 
