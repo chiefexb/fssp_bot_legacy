@@ -61,7 +61,7 @@ async def handler(request):
     f_value = data['message'].get('text')
     logging.info(u'fact' + str(data['message']['text']) + ';' + str(len(data['message']['text'])))
 
-    if len(f_name) > 0:
+    if len(f_name) > 0 and len(f_value) > 1:
 
         if len (f_value) > 1:
             async with request.app['db'].acquire() as conn:
