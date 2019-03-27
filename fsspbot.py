@@ -73,6 +73,7 @@ async def handler(request):
                     .where(fact.c.user_id == user_id)
                     .where(fact.c.fact_name == f_name)
                     .values(fact_value=f_value))
+                await conn.commit()
     if user_session_rec.intent_name == 'start' and len(data['message'].get('text')) > 1:
         async with request.app['db'].acquire() as conn:
             await conn.execute(
@@ -80,6 +81,7 @@ async def handler(request):
                 .returning(*user_session.c)
                 .where(user_session.c.user_id == user_id)
                 .values(intent_name=act))
+            await conn.commit()
     elif len(data['message'].get('text')) > 1:
         async with request.app['db'].acquire() as conn:
             await conn.execute(
@@ -87,6 +89,7 @@ async def handler(request):
                 .returning(*user_session.c)
                 .where(user_session.c.user_id == user_id)
                 .values(intent_name=act))
+
     message = {
         'chat_id': data['message']['chat']['id'],
         'text': message_text
