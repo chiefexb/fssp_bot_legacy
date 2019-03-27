@@ -33,7 +33,7 @@ async def get_user_session(conn, uid):
 
     result = await conn.execute(
         user_session.select()
-        .where(user_session.c.user_id == user_id))
+        .where(user_session.c.user_id == uid))
     user_session_record = await result.first()
     if not user_session_record:
         await conn.execute(user_session.insert().values(user_id=uid, intent_name='start'))
