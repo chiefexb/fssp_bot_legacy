@@ -10,25 +10,32 @@ from aiopg.sa import create_engine
 from settings import config
 
 
-class AccessLogger(AbstractAccessLogger):
-
-    def log(self, request, response, time):
-        self.logger.info(f'{request.remote} '
-                         f'"{request.method} {request.path} '
-                         f'done in {time}s: {response.status}'  )
+#class AccessLogger(AbstractAccessLogger):#
+#
+ #   def log(self, request, response, time):
+#        self.logger.info(f'{request.remote} '
+#                         f'"{request.method} {request.path} '"
+#
+#                         f'done in {time}s: {response.status}'          )
 
 async def init(loop):
-    fssp_token: config ['fssp_token']  
+    fssp_token= config ['fssp_token']  
     mywebhook='webhook'
     mydict={} #task_status start
     app = web.Application()
     app.mydict =mydict
-    from aiopg.sa import create_engine
     app.telegram_token= config ['telegram_token']
     app.API_URL = 'https://api.telegram.org/bot%s/sendMessage'
- 
+
+    dbengine = await create_engine(user= config['postgres']['user'],
+                                   password=config['postgres']['password'],
+                                   database=config['postgres']['database'],
+                                   host=config['postgres']['host'])
+
+    app.dbengine = dbengine
     web_handlers = Web()
     web_handlers.configure(app)
+
 
     logging.basicConfig(
         filename='/home/example.log',

@@ -31,7 +31,13 @@ class Web(object):
 
 
     async def webhook (self,request):
+        
         data = await request.json()
+        user_id = data['message'][ 'from'][ 'id']
+        result = await conn.execute("select * from main where user_id={} and ".format(user_id)  )
+        records = await result.fetchall()
+        if len ( records  ) ==0:
+             result2 = await conn.execute("insert into main (user_id) values ({})".format(user_id)  )
         #print (data)
         request.app.logger.info(data )
         headers = {
