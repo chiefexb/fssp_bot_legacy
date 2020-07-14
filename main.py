@@ -19,11 +19,12 @@ from settings import config
 #                         f'done in {time}s: {response.status}'          )
 
 async def init(loop):
-    fssp_token= config ['fssp_token']  
+    
     mywebhook='webhook'
     mydict={} #task_status start
     app = web.Application()
     app.mydict =mydict
+    app.fssp_token= config ['fssp_token']  
     app.telegram_token= config ['telegram_token']
     app.API_URL = 'https://api.telegram.org/bot%s/sendMessage'
 

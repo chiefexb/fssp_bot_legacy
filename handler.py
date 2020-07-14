@@ -13,7 +13,7 @@ class Web(object):
     #'search/physical'
     #-data-urlencode "region=66" \    --data-urlencode "lastname=Иванов" \    
     #--data-urlencode "firstname=Иван" \    --data-urlencode "token=yourapikey"
-        fssp_token= 'xf1tbKnkwVqd'
+        
         data['token']=fssp_token
         fssp_url= 'https://api-ip.fssprus.ru/api/v1.0/search/physical'
         headers = {   
@@ -34,10 +34,10 @@ class Web(object):
         
         data = await request.json()
         user_id = data['message'][ 'from'][ 'id']
-        result = await conn.execute("select * from main where user_id={} and ".format(user_id)  )
-        records = await result.fetchall()
-        if len ( records  ) ==0:
-             result2 = await conn.execute("insert into main (user_id) values ({})".format(user_id)  )
+        #result = await conn.execute("select * from main where user_id={} and ".format(user_id)  )
+        #records = await result.fetchall()
+        #if len ( records  ) ==0:
+         #    result2 = await conn.execute("insert into main (user_id) values ({})".format(user_id)  )
         #print (data)
         request.app.logger.info(data )
         headers = {
