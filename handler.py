@@ -47,7 +47,7 @@ class Web(object):
 
         dd={'first_name':'Сергей','last_name':'Шило', 'region':'9','date':'15.06.1981'}
         task='Ждемс'
-        task = await self.search (dd,  request.app.logger)
+        #task = await self.search (dd,  request.app.logger)
 
         message = {
             'chat_id': data['message']['chat']['id'],
